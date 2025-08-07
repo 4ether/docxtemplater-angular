@@ -1,10 +1,112 @@
 <div style="text-align: center;">
-  <h1>TESTING EXPORT DOCX</h1>
-  <div class="buttons">
-    <button (click)="exportDocx()">EXPORT DOCX</button>
+  <h1>TESTING DOCXTEMPLATER EXPORT</h1>
+  <div>
+    <div class="buttons">
+      <button (click)="addRow('tenaga')">Add Tenaga Pendidik</button>
+      <button (click)="addRow('dosen')">Add Dosen</button>
+    </div>
+    <div class="buttons">
+      <button (click)="selectedRowIndex !== null && editRow(getSelectedRow())" [disabled]="selectedRowIndex === null || getSelectedRow()?.edit">Edit</button>
+      <button (click)="selectedRowIndex !== null && saveRow(getSelectedRow())" [disabled]="selectedRowIndex === null || !getSelectedRow()?.edit">Save</button>
+      <button (click)="selectedRowIndex !== null && cancelEdit(getSelectedRow(), selectedRowIndex)" [disabled]="selectedRowIndex === null || !getSelectedRow()?.edit">Cancel</button>
+      <button (click)="selectedRowIndex !== null && deleteRow(selectedRowIndex)" [disabled]="selectedRowIndex === null">Hapus Row</button>
+    </div>
+    <div class="info">
+      <span>Catatan: Untuk mengedit, klik pada baris yang diinginkan, kemudian klik tombol Edit. Setelah selesai mengedit, klik tombol Save. Untuk membatalkan perubahan, klik Cancel.</span>
+      <span>Untuk menambahkan baris baru, klik tombol Add Tenaga Pendidik/Dosen. Untuk menghapus baris, pilih baris yang diinginkan dan klik tombol Hapus Row.</span>
+    </div>
   </div>
-  <div class="buttons">
-    <button (click)="exportPdf()">EXPORT PDF</button>
+
+  <div class="table-div" style="display: flex; justify-content: center;">
+    <table class="table a4-table" style="width: 794px; min-width: 794px; max-width: 794px;">
+      <thead>
+        <tr>
+            <th style="text-align: center; background-color: #d9d9d9;" colspan="3">Tenaga Pendidik</th>
+        </tr>
+        <tr>
+          <th style="text-align: center;" scope="col">Nama</th>
+          <th style="text-align: center;" scope="col">NIP</th>
+          <th style="text-align: center;" scope="col">Jabatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tenagaRows; let i = index" [class.selected]="selectedRowIndex === getGlobalIndex('tenaga', i)" (click)="selectRow(getGlobalIndex('tenaga', i))" style="height: 38px;">
+          <td>
+            <span *ngIf="!row.edit" style="min-height: 24px; display: inline-block; width: 100%;">{{ row.name }}&nbsp;</span>
+            <input *ngIf="row.edit" [(ngModel)]="row.name" />
+          </td>
+          <td>
+            <span *ngIf="!row.edit" style="min-height: 24px; display: inline-block; width: 100%;">{{ row.nip }}&nbsp;</span>
+            <input *ngIf="row.edit" [(ngModel)]="row.nip" />
+          </td>
+          <td>
+            <span *ngIf="!row.edit" style="min-height: 24px; display: inline-block; width: 100%;">{{ row.jabatan }}&nbsp;</span>
+            <input *ngIf="row.edit" [(ngModel)]="row.jabatan" />
+          </td>
+        </tr>
+        <tr>
+            <th style="text-align: center; background-color: #d9d9d9;" colspan="3">Dosen</th>
+        </tr>
+        <tr *ngFor="let row of dosenRows; let i = index" [class.selected]="selectedRowIndex === getGlobalIndex('dosen', i)" (click)="selectRow(getGlobalIndex('dosen', i))" style="height: 38px;">
+          <td>
+            <span *ngIf="!row.edit" style="min-height: 24px; display: inline-block; width: 100%;">{{ row.name }}&nbsp;</span>
+            <input *ngIf="row.edit" [(ngModel)]="row.name" />
+          </td>
+          <td>
+            <span *ngIf="!row.edit" style="min-height: 24px; display: inline-block; width: 100%;">{{ row.nip }}&nbsp;</span>
+            <input *ngIf="row.edit" [(ngModel)]="row.nip" />
+          </td>
+          <td>
+            <span *ngIf="!row.edit" style="min-height: 24px; display: inline-block; width: 100%;">{{ row.jabatan }}&nbsp;</span>
+            <input *ngIf="row.edit" [(ngModel)]="row.jabatan" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" style="text-align: center; font-weight: bold;">
+
+          </td>
+            <td colspan="2" style="text-align: center; vertical-align: bottom; padding-top: 40px; padding-bottom: 40px;">
+            <div style="margin-bottom: 16px;">{{ getIndonesianDate() }}</div>
+            <div style="height: 60px;"></div>
+            <br>
+            <br>
+            <div style="font-weight: normal;">Abhirama Aji Mahardhika</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <div>
+    <div class="buttons-export">
+      <form [formGroup]="exportForm" class="buttons-export" style="display: inline;">
+        <button class="export-btn" style="background-color: #03337b;" (click)="exportDocx()"><i class="fas fa-file"></i> EXPORT .DOCX</button>
+
+        <input
+          type="text"
+          placeholder="Input API Ekspor PDF"
+          formControlName="apiInput"
+          class="api-input"
+        />
+        <button
+          class="export-btn"
+          style="background-color: #03337b;"
+          (click)="exportPdf()"
+          [disabled]="!exportForm.get('apiInput')?.value || !exportForm.get('apiInput')?.value.trim()"
+          [ngStyle]="{
+            'background-color': (!exportForm.get('apiInput')?.value || !exportForm.get('apiInput')?.value.trim()) ? '#bdbdbd' : '#03337b',
+            'pointer-events': (!exportForm.get('apiInput')?.value || !exportForm.get('apiInput')?.value.trim()) ? 'none' : 'auto'
+          }"
+        >
+          <i class="fas fa-file"></i> EXPORT .PDF
+        </button>
+      </form>
+    </div>
+    <div>
+      <span>PDF diekspor dari DOCX ke PDF, API dapat diperoleh melalui <a href="https://www.convertapi.com" target="_blank">https://www.convertapi.com</a></span>
+    </div>
+  </div>
+  <footer style="width: 794px; margin: 32px auto 0 auto; text-align: center; font-size: 14px; color: #555;">
+    Made by Abhirama Aji Mahardhika with assist from GitHub Copilot
+  </footer>
 </div>
 

@@ -1,11 +1,98 @@
+h1 {
+  font-family: Arial, sans-serif;
+}
+
 .buttons {
   padding: 10px;
   display: flex;
   align-content: center;
   justify-content: center;
+  gap: 10px;
+
+}
+
+.buttons-export {
+  padding: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 10px;
+}
+.export-btn:hover {
+  background-color: #0448ad !important;
+}
+
+.api-input {
+  width: 300px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .buttons button {
-  min-width: 120px; /* Set your desired width */
+  min-width: 120px;
   min-height: 50px;
+}
+
+.buttons-export button {
+  min-width: 160px;
+  min-height: 40px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 7px;
+}
+
+.selected {
+  background-color: #cce5ff !important;
+  transition: background 0.2s;
+}
+
+.table-div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.table th, .table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+.a4-table {
+  width: 794px;
+  min-width: 794px;
+  max-width: 794px;
+  table-layout: fixed;
+  background: white;
+  border-collapse: collapse;
+  box-shadow: 0 0 8px #bbb;
+  border: 1px solid black; /* Add black border for the table */
+}
+
+.a4-table th, .a4-table td {
+  border: 1px solid black; /* Make cell borders black */
+  padding: 8px;
+  word-break: break-word;
+}
+
+.info {
+  width: 794px;
+  min-width: 794px;
+  max-width: 794px;
+  margin: 0 auto 16px auto;
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  background: #f7f7f7;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
