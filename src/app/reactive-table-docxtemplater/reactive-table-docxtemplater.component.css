@@ -1,0 +1,11 @@
+.buttons {
+  padding: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.buttons button {
+  min-width: 120px; /* Set your desired width */
+  min-height: 50px;
+}
