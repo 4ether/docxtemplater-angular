@@ -6,7 +6,7 @@
    
    Jalankan perintah berikut di terminal:
    ```
-   git clone https://github.com/username/docxtemplater-angular.git
+   git clone https://github.com/4ether/docxtemplater-angular.git
    ```
 
 2. **Masuk ke folder project**
