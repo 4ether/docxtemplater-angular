@@ -44,7 +44,6 @@ export class ReactiveTableDocxtemplaterComponent {
   ) { }
 
   exportPdf() {
-    //https://v2.convertapi.com/convert/doc/to/pdf?Auth=fthDkZdhd790RORrRRidJCJgfStQzceT
     const templatePath = 'assets/table.docx';
 
     this.http.get(templatePath, { responseType: 'arraybuffer' }).subscribe((content: ArrayBuffer) => {
@@ -69,7 +68,7 @@ export class ReactiveTableDocxtemplaterComponent {
       formData.append('File', out, 'output.docx');
 
       // Replace 'YOUR_SECRET' with your actual ConvertAPI secret
-      const apiUrl = 'https://v2.convertapi.com/convert/doc/to/pdf?Auth=fthDkZdhd790RORrRRidJCJgfStQzceT';
+      const apiUrl = 'https://v2.convertapi.com/convert/doc/to/pdf?Auth={{YOUR_SECRET}}';
 
       this.http.post(apiUrl, formData).subscribe((response: any) => {
         if (response && response.Files && response.Files.length > 0) {
