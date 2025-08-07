@@ -1,27 +1,50 @@
-# DocxtemplaterAngular
+# Docxtemplater Angular - Panduan Instalasi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+## Cara Install Setelah Clone Repo
 
-## Development server
+1. **Clone repository ini**
+   
+   Jalankan perintah berikut di terminal:
+   ```
+   git clone https://github.com/username/docxtemplater-angular.git
+   ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. **Masuk ke folder project**
+   ```
+   cd docxtemplater-angular
+   ```
 
-## Code scaffolding
+3. **Install dependencies**
+   
+   Pastikan Anda sudah menginstall [Node.js](https://nodejs.org/) dan [npm](https://www.npmjs.com/).
+   ```
+   npm install
+   ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. **Jalankan aplikasi Angular**
+   ```
+   ng serve
+   ```
+   atau jika Anda menggunakan npm script:
+   ```
+   npm start
+   ```
 
-## Build
+5. **Buka di browser**
+   
+   Setelah server berjalan, buka [http://localhost:4200](http://localhost:4200) di browser Anda.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+### Catatan
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Pastikan Anda sudah menginstall Angular CLI secara global:
+  ```
+  npm install -g @angular/cli
+  ```
+- Untuk ekspor PDF, Anda memerlukan API key dari [ConvertAPI](https://www.convertapi.com/).
+- Edit file dan tabel sesuai kebutuhan Anda.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Dibuat oleh Abhirama Aji Mahardhika dengan
