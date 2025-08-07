@@ -47,4 +47,4 @@
 
 ---
 
-**Dibuat oleh Abhirama Aji Mahardhika dengan
+**Dibuat oleh Abhirama Aji Mahardhika dengan bantuan GitHub Copilot**
